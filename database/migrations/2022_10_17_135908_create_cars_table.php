@@ -13,9 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('cars', function (Blueprint $table){
+
             $table->id();
-            $table->timestamps();
+            $table->string('Make');
+            $table->string('Model');
+            $table->string('Registration');
+            $table->double('Asking Price');
+            $table->date('dateOfNCTExpiration');
+            $table->date('dateOfTaxExpiration');
+            $table->string('Contact Email Address');
         });
     }
 
