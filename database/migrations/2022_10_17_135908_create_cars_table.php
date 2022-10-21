@@ -16,10 +16,13 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table){
 
             $table->id();
+            $table->string('image');
             $table->string('Make');
             $table->string('Model');
+            $table->string('colour');
             $table->string('Registration');
             $table->double('Asking Price');
+            $table->string('Location');
             $table->date('dateOfNCTExpiration');
             $table->date('dateOfTaxExpiration');
             $table->string('Contact Email Address');
