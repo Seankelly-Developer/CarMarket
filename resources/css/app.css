@@ -15,4 +15,11 @@
     .btn-danger {
         @apply bg-red-600 hover:bg-red-700 active:bg-red-700 ring-red-300;
     }
+    .test{
+        margin-bottom: 20px;
+        padding: 25px;
+    }
+    .test2{
+        margin-bottom: 20px;
+    }
 }

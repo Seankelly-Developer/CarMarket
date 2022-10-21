@@ -25,7 +25,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('cars.create');
     }
 
     /**
@@ -36,7 +36,32 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Image' => '',
+            'Make' => 'required',
+            'Model' => 'required',
+            'Colour' => 'required',
+            'Registration' => 'required',
+            'AskingPrice' => 'required',
+            'Location' => 'required',
+            'dateOfNCT' => 'required',
+            'taxDate' => 'required',
+            'email' => 'required',
+        ]);
+        Car::create([
+            'image' => $request->Image,
+            'Make' => $request->Make,
+            'Model' => $request->Model,
+            'colour' => $request->Colour,
+            'Registration' => $request->Registration,
+            'Make' => $request->Make,
+            'Asking Price' => $request->AskingPrice,
+            'Location' => $request->Location,
+            'dateOfNCTExpiration' => $request->dateOfNCT,
+            'dateOfTaxExpiration' => $request->taxDate,
+            'Contact Email Address' => $request->email,
+        ]);
+        return to_route('cars.index');
     }
 
     /**
