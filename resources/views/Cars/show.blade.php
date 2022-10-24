@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <a href = "{{ route('cars.create') }}" class = "btn-link btn-lg mb-2"> Create a new Advertisement</a>
+            <a href = "{{ route('cars.create') }}" class = "btn-link btn-lg mb-2"> skdjflksd a new Advertisement</a>
 
             @foreach ($Cars as $car)
         
