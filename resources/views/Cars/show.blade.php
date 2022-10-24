@@ -10,8 +10,7 @@
 
             <a href = "{{ route('cars.create') }}" class = "btn-link btn-lg mb-2"> skdjflksd a new Advertisement</a>
 
-            @foreach ($Cars as $car)
-        
+           
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
         <h2 class = "font-bold text-2xl">
             <a href="{{ route('cars.show', $car) }}">{{ $car->Make }}</a>
@@ -22,7 +21,7 @@
         </p>
         <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
     </div>
-            @endforeach
+            
         
     </div>
 </div>
