@@ -18,14 +18,10 @@
         </h2>
         <p class ="mt-2">
             {{ $car->Model }}
+            
         </p>
-        <p class ="mt-2">
-          <img src = "{{ asset('public/images/' .$car->image) }}" width="150" />
-        </p>
-         </div>
-
-    
-
+        <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
+        
             @endforeach
         </div>
     </div>

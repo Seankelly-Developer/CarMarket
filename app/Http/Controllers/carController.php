@@ -38,7 +38,7 @@ class CarController extends Controller
     {
         
         $request->validate([
-            'Image' => 'file|image',
+            'image' => 'file|image',
             'Make' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
@@ -51,7 +51,7 @@ class CarController extends Controller
         ]);
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '_'. $extension;
+        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
         $path = $image->storeAs('public/images', $filename);
         Car::create([
             'image' => $filename,
