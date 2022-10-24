@@ -12,9 +12,10 @@
             
         
 
-            <form action="{{ route('cars.store') }}" method = "post">
+            <form action="{{ route('cars.store') }}" method = "post" enctype = "multipart/form-data">
                 @csrf
-                <input type = "text" name = "Image" placeholder = "Place img here" class = "test">
+
+                
                 
                 @error('Make')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
@@ -62,6 +63,18 @@
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="email" placeholder="Enter your email address" class ="w-full test2">
+
+                <br>
+                <br>
+                <h2>Upload an image</h2>
+                <x-file-input
+                        type="file"
+                        name="image"
+                        placeholder="image"
+                        class="w-full mt-6"
+                        field="image">
+                    </x-file-input>
+                <br>
                 <button type ="submit">Publish Advertisment</button>
             </form>
         </div>

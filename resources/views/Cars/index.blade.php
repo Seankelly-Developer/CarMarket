@@ -19,6 +19,9 @@
         <p class ="mt-2">
             {{ $car->Model }}
         </p>
+        <p class ="mt-2">
+          <img src = "{{ asset('public/images/' .$car->image) }}" width="150" />
+        </p>
          </div>
 
     

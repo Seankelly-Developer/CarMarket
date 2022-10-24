@@ -36,8 +36,9 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
-            'Image' => '',
+            'Image' => 'file|image',
             'Make' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
@@ -48,8 +49,12 @@ class CarController extends Controller
             'taxDate' => 'required',
             'email' => 'required',
         ]);
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '_'. $extension;
+        $path = $image->storeAs('public/images', $filename);
         Car::create([
-            'image' => $request->Image,
+            'image' => $filename,
             'Make' => $request->Make,
             'Model' => $request->Model,
             'colour' => $request->Colour,
