@@ -21,9 +21,9 @@
             
         </p>
         <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
-        
+    </div>
             @endforeach
-        </div>
+        
     </div>
 </div>
 </x-app-layout>
