@@ -63,11 +63,11 @@ class CarController extends Controller
             'colour' => $request->Colour,
             'Registration' => $request->Registration,
             'Make' => $request->Make,
-            'Asking Price' => $request->AskingPrice,
+            'Asking_Price' => $request->AskingPrice,
             'Location' => $request->Location,
             'dateOfNCTExpiration' => $request->dateOfNCT,
             'dateOfTaxExpiration' => $request->taxDate,
-            'Contact Email Address' => $request->email,
+            'email' => $request->email,
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
@@ -94,9 +94,15 @@ class CarController extends Controller
     public function edit(Car $car)
     {
         if($car->user_id != Auth::id()){
-            return abort(403);
+            echo '<script type="text/javascript">
+                window.onload = function () { alert("You cannot edit this ad as you are not the creator"); } 
+            </script>'; 
+            return view('cars.show')->with('car', $car);
+        }else{
+            return view('cars.edit')->with('car', $car);
         }
-        return view('cars.edit')->with('car', $car);
+
+       
 
     }
 
@@ -107,9 +113,46 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Car $car)
     {
-        //
+        if($car->user_id != Auth::id()){
+            echo '<script type="text/javascript">
+                window.onload = function () { alert("You cannot edit this ad as you are not the creator"); } 
+            </script>'; 
+            return view('cars.show')->with('car', $car);
+        }
+        $request->validate([
+            'image' => 'file|image',
+            'Make' => 'required',
+            'Model' => 'required',
+            'Colour' => 'required',
+            'Registration' => 'required',
+            'AskingPrice' => 'required',
+            'Location' => 'required',
+            'dateOfNCT' => 'required',
+            'taxDate' => 'required',
+            'email' => 'required',
+        ]);
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
+        $path = $image->storeAs('public/images', $filename);
+        $car->update([
+            'image' => $filename,
+            'Make' => $request->Make,
+            'Model' => $request->Model,
+            'colour' => $request->Colour,
+            'Registration' => $request->Registration,
+            'Make' => $request->Make,
+            'Asking_Price' => $request->AskingPrice,
+            'Location' => $request->Location,
+            'dateOfNCTExpiration' => $request->dateOfNCT,
+            'dateOfTaxExpiration' => $request->taxDate,
+            'email' => $request->email,
+            'uuid' => Str::uuid(),
+            'user_id' => Auth::id(),
+        ]);
+        return to_route('cars.show', $car);
     }
 
     /**

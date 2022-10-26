@@ -23,11 +23,11 @@ return new class extends Migration
             $table->string('Model');
             $table->string('colour');
             $table->string('Registration');
-            $table->double('Asking Price');
+            $table->double('Asking_Price');
             $table->string('Location');
             $table->date('dateOfNCTExpiration');
             $table->date('dateOfTaxExpiration');
-            $table->string('Contact Email Address');
+            $table->string('email');
         });
     }
 
