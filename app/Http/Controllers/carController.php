@@ -68,6 +68,8 @@ class CarController extends Controller
             'dateOfNCTExpiration' => $request->dateOfNCT,
             'dateOfTaxExpiration' => $request->taxDate,
             'Contact Email Address' => $request->email,
+            'uuid' => Str::uuid(),
+            'user_id' => Auth::id(),
         ]);
         return to_route('cars.index');
     }
