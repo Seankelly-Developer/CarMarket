@@ -161,8 +161,15 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        //
+        if($car->user_id != Auth::id()){
+            echo '<script type="text/javascript">
+                window.onload = function () { alert("You cannot delete this ad as you are not the creator"); } 
+            </script>'; 
+            return view('cars.show')->with('car', $car);
+        }
+        $car->delete();
+        return to_route('cars.index');
     }
 }
