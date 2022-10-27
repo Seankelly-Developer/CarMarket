@@ -10,18 +10,22 @@
 
             <a href = "{{ route('cars.create') }}" class = "btn-link btn-lg mb-2"> Create a new Advertisement</a>
 
+
             @foreach ($Cars as $car)
-        
-        <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-        <h2 class = "font-bold text-2xl">
-            <a href="{{ route('cars.show', $car) }}">{{ $car->Make }} {{ $car->Model }}</a>
-        </h2>
-        <p class ="mt-2">
-            
-            
-        </p>
-        <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
-    </div>
+                    
+                    <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+                    <h2 class = "font-bold text-2xl">
+                        <a href="{{ route('cars.show', $car) }}">{{ $car->Make }} {{ $car->Model }}</a>
+                    </h2>
+                    
+                    <a href="{{ route('cars.show', $car) }}"><img src="{{asset('storage/images/' . $car->image) }}" width="150" /></a>
+                    <p class ="mt-2">
+                        <p><strong>Location:</strong> {{ $car->Location}}</p>
+                    </p>
+                    <p class ="mt-2">
+                        <p><strong>Asking Price: €</strong> {{ $car->Asking_Price }}</p>
+                    </p>
+                </div>
             @endforeach
         
     </div>

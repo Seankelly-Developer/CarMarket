@@ -27,7 +27,7 @@
         
         <img src="{{asset('storage/images/' . $car->image) }}" width="200" />
         <p class ="mt-2">
-            <p><strong>Price: €</strong> {{ $car->Asking_Price}}</p>
+            <p><strong>Asking Price: €</strong> {{ $car->Asking_Price}}</p>
         </p>
         <p class ="mt-2">
             <p><strong>Colour:</strong> {{ $car->colour}}</p>
