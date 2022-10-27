@@ -22,18 +22,20 @@
             {{ $car->Make }} {{ $car->Model }}
         </h2>
         <p class ="mt-2">
+            <p><strong>Location:</strong> {{ $car->Location}}</p>
+        </p>
+        
+        <img src="{{asset('storage/images/' . $car->image) }}" width="200" />
+        <p class ="mt-2">
             <p><strong>Price: €</strong> {{ $car->Asking_Price}}</p>
         </p>
-        <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
         <p class ="mt-2">
             <p><strong>Colour:</strong> {{ $car->colour}}</p>
         </p>
         <p class ="mt-2">
             <p><strong>Registration:</strong> {{ $car->Registration}}</p>
         </p>
-        <p class ="mt-2">
-            <p><strong>Location:</strong> {{ $car->Location}}</p>
-        </p>
+       
 
         <p class ="mt-2">
             <p><strong>Description</strong></p>
