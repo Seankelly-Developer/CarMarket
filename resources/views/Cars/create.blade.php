@@ -16,38 +16,54 @@
                 @csrf
 
                 
-                
+                <h2>Make</h2>
                 @error('Make')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Make" placeholder="Enter Make" class ="w-full test2">
                 
+                <h2>Model</h2>
                 @error('Model')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Model" placeholder="Enter Model" class ="w-full test2">
                 
+                <h2>Colour</h2>
                 @error('Colour')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Colour" placeholder="Enter Colour" class = "test2" >
-                
+                <h2>Registration</h2>
                 @error('Registration')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Registration" placeholder="Enter Car's Registration" class ="w-full test2">
                
+                <h2>Asking Price</h2>
                 @error('AskingPrice')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="AskingPrice" placeholder="Enter asking price" class ="w-full test2">
                 
+                <h2>Location</h2>
                 @error('Location')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Location" placeholder="Enter your location" class ="w-full test2">
+                
+                <h2>Description</h2>
+                @error('Description')
+                <div class = "text-red-600 text-sm">{{ $message }}</div>
+                @enderror
+                <x-textarea
+                        name="Description"
+                        rows="10"
+                        field="text"
+                        placeholder="Enter a description..."
+                        class="w-full mt-6"
+                        :value="@old('Description')"></x-textarea>
+                
                 <h2>NCT expiration date</h2>
-               
                 @error('dateOfNCT')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
@@ -59,6 +75,7 @@
                 @enderror
                 <input type = "date" name ="taxDate" placeholder="Enter Tax expiration date" class = "test2">
                 
+                <h2>Email Address</h2>
                 @error('email')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror

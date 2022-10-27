@@ -34,6 +34,14 @@
         <p class ="mt-2">
             <p><strong>Location:</strong> {{ $car->Location}}</p>
         </p>
+
+        <p class ="mt-2">
+            <p><strong>Description</strong></p>
+        </p>
+        <p class ="mt-1">
+            <p>{{ $car->Description}}</p>
+        </p>
+
         <p class ="mt-2">
             <p><strong>Date of NCT Expiration</strong> {{ $car->dateOfNCTExpiration}}</p>
         </p>

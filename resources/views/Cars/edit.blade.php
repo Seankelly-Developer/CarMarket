@@ -44,6 +44,19 @@
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Location" placeholder="Enter your location" class ="w-full test2" value = {{ $car->Location }}>
+                
+                @error('Description')
+                <div class = "text-red-600 text-sm">{{ $message }}</div>
+                @enderror
+                <x-textarea
+                        name="Description"
+                        rows="10"
+                        field="text"
+
+                        placeholder="Enter a description..."
+                        class="w-full mt-6"
+                        :value="@old('Description', $car)"></x-textarea>
+            
                 <h2>NCT expiration date</h2>
                
                 @error('dateOfNCT')

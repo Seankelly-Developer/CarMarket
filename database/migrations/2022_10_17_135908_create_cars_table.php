@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('Registration');
             $table->double('Asking_Price');
             $table->string('Location');
+            $table->string('Description');
             $table->date('dateOfNCTExpiration');
             $table->date('dateOfTaxExpiration');
             $table->string('email');
+            
         });
     }
 
