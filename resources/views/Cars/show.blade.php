@@ -19,13 +19,31 @@
            
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
         <h2 class = "font-bold text-2xl">
-            {{ $car->Make }}
+            {{ $car->Make }} {{ $car->Model }}
         </h2>
         <p class ="mt-2">
-            {{ $car->Model }}
-            
+            <p><strong>Price: €</strong> {{ $car->Asking_Price}}</p>
         </p>
         <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
+        <p class ="mt-2">
+            <p><strong>Colour:</strong> {{ $car->colour}}</p>
+        </p>
+        <p class ="mt-2">
+            <p><strong>Registration:</strong> {{ $car->Registration}}</p>
+        </p>
+        <p class ="mt-2">
+            <p><strong>Location:</strong> {{ $car->Location}}</p>
+        </p>
+        <p class ="mt-2">
+            <p><strong>Date of NCT Expiration</strong> {{ $car->dateOfNCTExpiration}}</p>
+        </p>
+        <p class ="mt-2">
+            <p><strong>Date of Tax Expiration</strong> {{ $car->dateOfTaxExpiration}}</p>
+        </p>
+       
+        <p class ="mt-2 emailLink">
+            <a href = "mailto: {{ $car->email }}">Contact Owner</a>
+        </p>
     </div>
             
         

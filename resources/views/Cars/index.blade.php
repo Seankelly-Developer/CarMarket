@@ -14,10 +14,10 @@
         
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
         <h2 class = "font-bold text-2xl">
-            <a href="{{ route('cars.show', $car) }}">{{ $car->Make }}</a>
+            <a href="{{ route('cars.show', $car) }}">{{ $car->Make }} {{ $car->Model }}</a>
         </h2>
         <p class ="mt-2">
-            {{ $car->Model }}
+            
             
         </p>
         <img src="{{asset('storage/images/' . $car->image) }}" width="150" />
