@@ -9,6 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class = "flex">
                 <a href = "{{ route('cars.edit', $car) }}" class = "btn-link ml-auto">Edit Advertisement</a>
+                <form action = "{{ route('cars.destroy', $car) }} " method = "post">
+                    @method('delete')
+                    @csrf
+                    <button type = "submit" class = "btn btn-danger ml-4" onclick="return confirm('Are you sure?')">Delete advertisement</button>
             </div>
             
 
