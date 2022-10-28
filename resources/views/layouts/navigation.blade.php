@@ -15,9 +15,7 @@
                     <x-nav-link :href="route('cars.index')" :active="request()->routeIs('cars.index')">
                         {{ __('Cars') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('cars.ads')" :active="request()->routeIs('cars.ads')">
-                        {{ __('Your Ads') }}
-                    </x-nav-link>
+                    
                 </div>
             </div>
 
@@ -77,6 +75,7 @@
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
             </div>
+
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->

@@ -86,10 +86,7 @@ class CarController extends Controller
     {
         return view('cars.show')->with('car', $car);
     }
-    public function myads(){
-        return view('/Cars.ads');
-    }
-
+ 
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,6 +100,7 @@ class CarController extends Controller
                 window.onload = function () { alert("You cannot edit this ad as you are not the creator"); } 
             </script>'; 
             return view('cars.show')->with('car', $car);
+
         }else{
             return view('cars.edit')->with('car', $car);
         }

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class = "flex">
-                <a href = "{{ route('cars.edit', $car) }}" class = "btn-link ml-auto">Edit Advertisement</a>
+                <a href = "{{ route('cars.edit', $car) }}" class = "btn-link ml-auto maxHeight">Edit Advertisement</a>
                 <form action = "{{ route('cars.destroy', $car) }} " method = "post">
                     @method('delete')
                     @csrf
