@@ -12,5 +12,7 @@ Route::get('/Cars.index', function () {
     return view('Cars.index');
 })->middleware(['auth', 'verified'])->name('Cars');
 
+Route::get('/Cars.ads', [CarController::class, 'myads'])->name('ads');
+
 
 require __DIR__.'/auth.php';

@@ -86,6 +86,9 @@ class CarController extends Controller
     {
         return view('cars.show')->with('car', $car);
     }
+    public function myads(){
+        return view('/Cars.ads');
+    }
 
     /**
      * Show the form for editing the specified resource.
