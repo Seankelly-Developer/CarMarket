@@ -86,7 +86,7 @@ class CarFactory extends Factory
             "Volvo"]),
             'Model' => $this->faker->randomElement(["Gran Fury", "Nubira", "Sonic", "Acadia", "Corniche", "Gran Turismo", "Oasis", "Sonoma", "Accent", "Corolla", "Grand Am", "Odyssey	Sorento", "Acclaim	Coronet", "Grand Prix", "Omega", "Soul", "Accord", "Corrado", "Grand Vitara", "Omni", "Spark", "Achieva", "Corsair", "Grand", "Voyager", "Optima", "Spectra", "Aerio", "Corsica	Greiz", "Outback", "Spectrum", "Aerostar", "Cortina", "Gremlin", "Outlander", "Spider", "Aileron", "Corvette", "Grenada"]),
             'Colour' => $this->faker->randomElement(["Red", "Blue", "Green", "Yellow", "Black", "White"]),
-            'Registration' => $this->faker->word(),
+            'Registration' => $this->faker->randomNumber(8, true),
             'Asking_Price' => $this->faker->randomNumber(5, true),
             'Location' => $this->faker->randomElement(["Carlow", "Cavan", "Clare", "Cork", "Donegal", "Dublin", "Galway", "Kerry", "Kildare", "Kilkenny", "Laois", "Leitrim", "Limerick", "Longford", "Louth", "Mayo", "Meath", "Monaghan", "Offaly", "Roscommon", "Sligo", "Tipperary", "Waterford", "Westmeath", "Wexford", "Wicklow"]),
             'Description' => $this->faker->text(),
