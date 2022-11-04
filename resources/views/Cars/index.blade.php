@@ -28,7 +28,7 @@
                     <a href = "{{ route('cars.show', $car) }}" class = "btn-link ml-auto mt-10">View advertisement</a>
                 </div>
             @endforeach
-        
+        {{ $Cars->links() }}
     </div>
 </div>
 </x-app-layout>
