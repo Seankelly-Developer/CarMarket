@@ -11,13 +11,17 @@
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
             
         
-
+            <!--This form is for adding each piece of data in order to utilise the store function through 
+            the store route specified in the action of the form-->
             <form action="{{ route('cars.store') }}" method = "post" enctype = "multipart/form-data">
                 @csrf
 
-                
+                <!--For each element I included a header to label the input field, 
+                A placeholder to guide the user and the class in order for css, I utilise tailwind 
+                for css but added my own code to make each element further apart-->
                 <h2>Make</h2>
                 @error('Make')
+                <!--The following code displays an error message if left blank and submitted-->
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 <input type = "text" name ="Make" placeholder="Enter Make" class ="w-full test2">
@@ -83,6 +87,7 @@
 
                 <br>
                 <br>
+                <!--The following code specifies an image input field-->
                 <h2>Upload an image</h2>
                 <x-file-input
                         type="file"
