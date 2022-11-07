@@ -10,7 +10,7 @@
 
             <a href = "{{ route('cars.create') }}" class = "btn-link btn-lg mb-2"> Create a new Advertisement</a>
 
-
+            <!--This loop ensures that each car in the database is shown-->
             @foreach ($Cars as $car)
                     
                     <div class ="my-6 p-6 bg-white border-b border-gray-100 shadow-sm sm:rounded-lg">
@@ -25,6 +25,7 @@
                     <p class ="mt-2">
                         <p><strong>Asking Price: €</strong> {{ $car->Asking_Price }}</p>
                     </p>
+                    <!--This link is to allow the user to click the ad and view more details using the show route-->
                     <a href = "{{ route('cars.show', $car) }}" class = "btn-link ml-auto mt-10">View advertisement</a>
                 </div>
             @endforeach
