@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table){
 
+            /*This function creates the database table cars and specifies the table names and field types*/
+
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->foreignId('user_id')->nullable();
@@ -40,6 +42,7 @@ return new class extends Migration
      */
     public function down()
     {
+        /*This function drops the cars table if the migration is run and the table already exists */
         Schema::dropIfExists('cars');
     }
 };
