@@ -5,6 +5,13 @@
         </h2>
     </x-slot>
 
+    <!--Upon clicking on a specific advertisement through the button, title or image
+    This view is shown which shows more of the advertisement's fields from the database.-->
+
+
+    <!--Below includes the edit and delete button, upon clicking either button the user is verified as the owner of the
+    advertisement through the edit route's verification-->
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class = "flex">
@@ -15,6 +22,8 @@
                     <button type = "submit" class = "btn btn-danger ml-4" onclick="return confirm('Are you sure?')">Delete advertisement</button>
             </div>
             
+
+            <!--All the car's fields are retrieved and displayed below.-->
 
            
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
@@ -51,6 +60,7 @@
             <p><strong>Date of Tax Expiration</strong> {{ $car->dateOfTaxExpiration}}</p>
         </p>
        
+        <!--The mailto function allows the user to contact the advertiser-->
         <p class ="mt-2 emailLink">
             <a href = "mailto: {{ $car->email }}">Contact Owner</a>
         </p>
