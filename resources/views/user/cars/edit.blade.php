@@ -7,14 +7,14 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href = "{{ route('cars.index') }}" class = "btn-link ml-auto">Cancel</a>
+            <a href = "{{ route('user.cars.index') }}" class = "btn-link ml-auto">Cancel</a>
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
             
         
             <!--The edit form is  very similar to the create except the current values 
             are shown in each field using the value specification on each field -->
             <!--The form action is specified as the update route which validates and stores the changes.-->
-            <form action="{{ route('cars.update', $car) }}" method = "post" enctype = "multipart/form-data">
+            <form action="{{ route('user.cars.update', $car) }}" method = "post" enctype = "multipart/form-data">
                 @method('put')
                 @csrf
                 @error('Make')

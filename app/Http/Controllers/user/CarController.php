@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
-/*Purpose of the controller is to control the
- behaviour of a request and it handles 
- the requests that come from the routes */
-
-use App\Models\Car;
-use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+use App\Models\car;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 class CarController extends Controller
 {
@@ -20,8 +19,10 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars=Car::paginate(5);
-        return view('cars.index')->with('Cars', $cars);
+        $user = Auth::user();
+        $user->authorizeRoles('user');
+        $cars = Car::paginate(5);
+        return view('user.cars.index')->with('Cars', $cars);
     }
 
     /**
@@ -31,8 +32,10 @@ class CarController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        $user->authorizeRoles('user');
         /*This returns the view that displays the advertisement creation form*/
-        return view('cars.create');
+        return view('user.cars.create');
     }
 
     /**
@@ -44,7 +47,10 @@ class CarController extends Controller
     public function store(Request $request)
     {
         /*This function specifies what fields are required via validation below */
-        
+
+        $user = Auth::user();
+        $user->authorizeRoles('user');
+
         $request->validate([
             'image' => 'file|image',
             'Make' => 'required',
@@ -53,7 +59,7 @@ class CarController extends Controller
             'Registration' => 'required',
             'AskingPrice' => 'required',
             'Location' => 'required',
-            'Description' =>'required',
+            'Description' => 'required',
             'dateOfNCT' => 'required',
             'taxDate' => 'required',
             'email' => 'required',
@@ -63,7 +69,7 @@ class CarController extends Controller
 
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
+        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.' . $extension;
         $path = $image->storeAs('public/images', $filename);
 
         /*The following code creates a car object to be used to store to the database and specifies which columns to 
@@ -85,7 +91,7 @@ class CarController extends Controller
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
-        return to_route('cars.index');
+        return to_route('user.cars.index');
     }
 
     /**
@@ -96,10 +102,12 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
+        $user = Auth::user();
+        $user->authorizeRoles('user');
         /*This function returns the view that displays the specific advertisement clicked by the user */
-        return view('cars.show')->with('car', $car);
+        return view('user.cars.show')->with('car', $car);
     }
- 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,26 +118,24 @@ class CarController extends Controller
     /*The edit function takes the car variable in order to specify which advertisement the user is
     requesting to edit. */
     {
+        $user = Auth::user();
+        $user->authorizeRoles('user');
         /*The following verifies that the user is the advertisement publisher prior to allowing them to get to the edit view
         in order to make any changes */
 
-        if($car->user_id != Auth::id()){
-             /*This displays a message telling the user why they can't edit the 
+        if ($car->user_id != Auth::id()) {
+            /*This displays a message telling the user why they can't edit the 
              advertisement if they are not the creator of the advertisement.*/
             echo '<script type="text/javascript">
                
                 window.onload = function () { alert("You cannot edit this ad as you are not the creator"); } 
-            </script>'; 
+            </script>';
             /*This returns the previous screen */
-            return view('cars.show')->with('car', $car);
-
-        }else{
+            return view('user.cars.show')->with('car', $car);
+        } else {
             /*This returns the edit form screen */
-            return view('cars.edit')->with('car', $car);
+            return view('user.cars.edit')->with('car', $car);
         }
-
-       
-
     }
 
     /**
@@ -141,13 +147,15 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $user = Auth::user();
+        $user->authorizeRoles('user');
         /*The update function uses the same validation as create in order to update the advertisement
         on the database */
-        if($car->user_id != Auth::id()){
+        if ($car->user_id != Auth::id()) {
             echo '<script type="text/javascript">
                 window.onload = function () { alert("You cannot edit this ad as you are not the creator"); } 
-            </script>'; 
-            return view('cars.show')->with('car', $car);
+            </script>';
+            return view('user.cars.show')->with('car', $car);
         }
         $request->validate([
             'image' => 'file|image',
@@ -164,7 +172,7 @@ class CarController extends Controller
         ]);
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.'. $extension;
+        $filename = date('Y-m-d-His') . '_' . $request->input('title') . '.' . $extension;
         $path = $image->storeAs('public/images', $filename);
         $car->update([
             'image' => $filename,
@@ -182,7 +190,7 @@ class CarController extends Controller
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
-        return to_route('cars.show', $car);
+        return to_route('user.cars.show', $car);
     }
 
     /**
@@ -193,16 +201,18 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        $user = Auth::user();
+        $user->authorizeRoles('user');
         /*The destory function takes the car variable, checks the user is rthe owner and either 
         warns the user that they're not the creator via a javascript alert or deletes the advertisement
         if validation is passed */
-        if($car->user_id != Auth::id()){
+        if ($car->user_id != Auth::id()) {
             echo '<script type="text/javascript">
                 window.onload = function () { alert("You cannot delete this ad as you are not the creator"); } 
-            </script>'; 
-            return view('cars.show')->with('car', $car);
+            </script>';
+            return view('user.cars.show')->with('car', $car);
         }
         $car->delete();
-        return to_route('cars.index');
+        return to_route('user.cars.index');
     }
 }

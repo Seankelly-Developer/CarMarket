@@ -28,7 +28,7 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     <!--Routes are specified below to open the correct webpages when clicking register and login-->
                     @auth
-                        <a href="{{ url('/cars') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Advertisements</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Advertisements</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -39,7 +39,7 @@
                 </div>
             @endif
             <div class = "MainIntro">
-            <h1>Welcome to <a href = "{{ url('/cars') }}">&nbsp; CarMarket</a></h1>
+            <h1>Welcome to <a href = "{{ url('/home') }}">&nbsp; CarMarket</a></h1>
             </div>
                 
 
