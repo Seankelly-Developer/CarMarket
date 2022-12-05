@@ -15,7 +15,7 @@
                     
                     <div class ="my-6 p-6 bg-white border-b border-gray-100 shadow-sm sm:rounded-lg">
                     <h2 class = "font-bold text-4xl mb-10">
-                        <a href="{{ route('user.cars.show', $car) }}">{{ $car->Make }} {{ $car->Model }}</a>
+                        <a href="{{ route('user.cars.show', $car) }}">{{ $car->make->name }} {{ $car->Model }}</a>
                     </h2>
                     
                     <a href="{{ route('user.cars.show', $car) }}"><img src="{{asset('storage/images/' . $car->image) }}" width="250" /></a>
@@ -30,7 +30,7 @@
                 </div>
             @endforeach
             <!--This allows for pagination-->
-        {{ $Cars->links() }}
+        {{-- {{ $Cars->links() }} --}}
     </div>
 </div>
 </x-app-layout>

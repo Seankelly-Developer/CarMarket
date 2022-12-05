@@ -20,7 +20,7 @@
                 @error('Make')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
-                <input type = "text" name ="Make" placeholder="Enter Make" class ="w-full test2" value = {{ $car->Make }}>
+                <input type = "text" name ="Make" placeholder="Enter Make" class ="w-full test2" value = {{ $car->make->name }}>
                 
                 @error('Model')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>

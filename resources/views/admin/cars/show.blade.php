@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $car->Make }}{{ ' For Sale' }}
+            {{ $car->make->name }}{{ ' For Sale' }}
         </h2>
     </x-slot>
 
@@ -28,7 +28,7 @@
            
         <div class ="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
         <h2 class = "font-bold text-2xl">
-            {{ $car->Make }} {{ $car->Model }}
+            {{ $car->make->name }} {{ $car->Model }}
         </h2>
         <p class ="mt-2">
             <p><strong>Location:</strong> {{ $car->Location}}</p>

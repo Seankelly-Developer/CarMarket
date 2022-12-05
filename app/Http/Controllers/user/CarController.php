@@ -21,7 +21,8 @@ class CarController extends Controller
     {
         $user = Auth::user();
         $user->authorizeRoles('user');
-        $cars = Car::paginate(5);
+        // $cars = Car::paginate(5);
+        $cars = Car::with('Make')->get();
         return view('user.cars.index')->with('Cars', $cars);
     }
 

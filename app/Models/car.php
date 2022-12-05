@@ -12,7 +12,7 @@ class car extends Model
     protected $guarded = [];
     public $timestamps = false;
 
-    public function model()
+    public function make()
     {
         return $this->belongsTo(Make::class);
     }
