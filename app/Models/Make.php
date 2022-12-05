@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class car extends Model
+class Make extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'countryOfOrigin'];
 
-    protected $guarded = [];
-    public $timestamps = false;
 
-    public function model()
+    public function cars()
     {
-        return $this->belongsTo(Make::class);
+        return $this->hasMany(Car::class);
     }
 }
