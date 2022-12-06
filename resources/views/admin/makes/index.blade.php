@@ -9,7 +9,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <a href = "{{ route('admin.cars.create') }}" class = "btn-link btn-lg mb-2"> Create a new Advertisement</a>
-            
 
             <!--This loop ensures that each car in the database is shown-->
             @foreach ($Cars as $car)

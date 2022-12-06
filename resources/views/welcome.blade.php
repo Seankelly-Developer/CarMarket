@@ -40,7 +40,7 @@
             @endif
             <div class = "MainIntro">
             <h1>Welcome to <a href = "{{ url('/home') }}">&nbsp; CarMarket</a></h1>
-            </div>
+            
                 
 
             

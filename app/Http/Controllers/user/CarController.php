@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\car;
+use App\Models\Make;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class CarController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('user');
         /*This returns the view that displays the advertisement creation form*/
-        return view('user.cars.create');
+        $make = Make::all();
+        return view('user.cars.create')->with('makes', $make);
     }
 
     /**
@@ -54,7 +56,7 @@ class CarController extends Controller
 
         $request->validate([
             'image' => 'file|image',
-            'Make' => 'required',
+            'make_id' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
             'Registration' => 'required',
@@ -78,7 +80,7 @@ class CarController extends Controller
 
         Car::create([
             'image' => $filename,
-            'Make' => $request->Make,
+            'make_id' => $request->make_id,
             'Model' => $request->Model,
             'colour' => $request->Colour,
             'Registration' => $request->Registration,
@@ -135,7 +137,8 @@ class CarController extends Controller
             return view('user.cars.show')->with('car', $car);
         } else {
             /*This returns the edit form screen */
-            return view('user.cars.edit')->with('car', $car);
+            $make = Make::all();
+            return view('user.cars.edit')->with('car', $car)->with('makes', $make);
         }
     }
 
@@ -160,7 +163,7 @@ class CarController extends Controller
         }
         $request->validate([
             'image' => 'file|image',
-            'Make' => 'required',
+            'make_id' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
             'Registration' => 'required',
@@ -177,7 +180,7 @@ class CarController extends Controller
         $path = $image->storeAs('public/images', $filename);
         $car->update([
             'image' => $filename,
-            'Make' => $request->Make,
+            'make_id' => $request->make_id,
             'Model' => $request->Model,
             'colour' => $request->Colour,
             'Registration' => $request->Registration,
@@ -211,6 +214,7 @@ class CarController extends Controller
             echo '<script type="text/javascript">
                 window.onload = function () { alert("You cannot delete this ad as you are not the creator"); } 
             </script>';
+
             return view('user.cars.show')->with('car', $car);
         }
         $car->delete();

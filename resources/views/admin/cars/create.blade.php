@@ -19,13 +19,22 @@
                 <!--For each element I included a header to label the input field, 
                 A placeholder to guide the user and the class in order for css, I utilise tailwind 
                 for css but added my own code to make each element further apart-->
-                <h2>Make</h2>
-                @error('Make')
-                <!--The following code displays an error message if left blank and submitted-->
-                    <div class = "text-red-600 text-sm">{{ $message }}</div>
-                @enderror
-                <input type = "text" name ="Make" placeholder="Enter Make" class ="w-full test2">
                 
+                
+                <div class = "form-group">
+                    <label for = "make">Make</label>
+                    <select name = "make_id">
+                        @foreach ($makes as $make)
+                            <option value = "{{ $make->id }}" {{ (old('make_id') == $make->id) ? "selected" : "" }}>
+                                {{ $make->name }}
+                            </option>
+                            @endforeach
+                    </select>
+                </div>
+
+                            
+                        
+               
                 <h2>Model</h2>
                 @error('Model')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>

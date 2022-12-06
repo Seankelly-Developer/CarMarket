@@ -8,6 +8,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use App\Models\Make;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,8 @@ class CarController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
         /*This returns the view that displays the advertisement creation form*/
-        return view('admin.cars.create');
+        $make = Make::all();
+        return view('admin.cars.create')->with('makes', $make);
     }
 
     /**
@@ -55,7 +57,7 @@ class CarController extends Controller
 
         $request->validate([
             'image' => 'file|image',
-            'Make' => 'required',
+            'make_id' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
             'Registration' => 'required',
@@ -79,7 +81,7 @@ class CarController extends Controller
 
         Car::create([
             'image' => $filename,
-            'Make' => $request->Make,
+            'make_id' => $request->make_id,
             'Model' => $request->Model,
             'colour' => $request->Colour,
             'Registration' => $request->Registration,
@@ -124,8 +126,8 @@ class CarController extends Controller
         $user->authorizeRoles('admin');
         /*The following verifies that the user is the advertisement publisher prior to allowing them to get to the edit view
         in order to make any changes */
-
-        return view('admin.cars.edit')->with('car', $car);
+        $make = Make::all();
+        return view('admin.cars.edit')->with('car', $car)->with('makes', $make);
     }
 
     /**
@@ -141,7 +143,7 @@ class CarController extends Controller
         $user->authorizeRoles('admin');
         $request->validate([
             'image' => 'file|image',
-            'Make' => 'required',
+            'make_id' => 'required',
             'Model' => 'required',
             'Colour' => 'required',
             'Registration' => 'required',
@@ -158,7 +160,7 @@ class CarController extends Controller
         $path = $image->storeAs('public/images', $filename);
         $car->update([
             'image' => $filename,
-            'Make' => $request->Make,
+            'make_id' => $request->make_id,
             'Model' => $request->Model,
             'colour' => $request->Colour,
             'Registration' => $request->Registration,
