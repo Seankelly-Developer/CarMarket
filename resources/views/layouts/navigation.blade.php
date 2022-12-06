@@ -15,8 +15,17 @@
                     <x-nav-link :href="route('home.index')" :active="request()->routeIs('home.index')">
                         {{ __('Cars') }}
                     </x-nav-link>
+
                     
+                    <x-nav-link :href="route('home.makes.index')" :active="request()->routeIs('home.makes.index')">
+                        {{ __('Makes') }}
+                    </x-nav-link>
                 </div>
+
+            
+
+
+
             </div>
 
             <!-- Settings Dropdown -->

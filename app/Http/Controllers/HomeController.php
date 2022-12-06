@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-       /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -31,11 +31,28 @@ class HomeController extends Controller
         $user = Auth::user();
         $home = 'home';
 
-        if($user->hasRole('admin')){
+        if ($user->hasRole('admin')) {
             $home = 'admin.cars.index';
-        }
-        else if ($user->hasRole('user')){
+        } else if ($user->hasRole('user')) {
             $home = 'user.cars.index';
+        }
+        return redirect()->route($home);
+    }
+
+
+
+
+
+    public function makeIndex(Request $request)
+    {
+
+        $user = Auth::user();
+        $home = 'home';
+
+        if ($user->hasRole('admin')) {
+            $home = 'admin.makes.index';
+        } else if ($user->hasRole('user')) {
+            $home = 'user.makes.index';
         }
         return redirect()->route($home);
     }

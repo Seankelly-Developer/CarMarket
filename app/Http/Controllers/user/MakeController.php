@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Make;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class MakeController extends Controller
@@ -17,11 +16,9 @@ class MakeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
 
         $makes = Make::all();
-        return view('admin.makes.index')->with('makes', $makes);
+        return view('user.makes.index')->with('makes', $makes);
     }
 
     /**
@@ -51,7 +48,6 @@ class MakeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
 
 
     /**
