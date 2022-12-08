@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table){
+        Schema::create('cars', function (Blueprint $table) {
 
             /*This function creates the database table cars and specifies the table names and field types*/
 
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('image');
             $table->string('Make');
             $table->string('Model');
-            $table->string('colour');
             $table->string('Registration');
             $table->double('Asking_Price');
             $table->string('Location');
@@ -31,7 +30,6 @@ return new class extends Migration
             $table->date('dateOfNCTExpiration');
             $table->date('dateOfTaxExpiration');
             $table->string('email');
-            
         });
     }
 

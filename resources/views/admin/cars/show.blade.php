@@ -38,9 +38,9 @@
         <p class ="mt-2">
             <p><strong>Asking Price: €</strong> {{ $car->Asking_Price}}</p>
         </p>
-        <p class ="mt-2">
+        {{-- <p class ="mt-2">
             <p><strong>Colour:</strong> {{ $car->colour}}</p>
-        </p>
+        </p> --}}
         <p class ="mt-2">
             <p><strong>Registration:</strong> {{ $car->Registration}}</p>
         </p>

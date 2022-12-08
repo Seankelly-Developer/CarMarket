@@ -58,7 +58,6 @@ class CarController extends Controller
             'image' => 'file|image',
             'make_id' => 'required',
             'Model' => 'required',
-            'Colour' => 'required',
             'Registration' => 'required',
             'AskingPrice' => 'required',
             'Location' => 'required',
@@ -82,7 +81,7 @@ class CarController extends Controller
             'image' => $filename,
             'make_id' => $request->make_id,
             'Model' => $request->Model,
-            'colour' => $request->Colour,
+
             'Registration' => $request->Registration,
             'Make' => $request->Make,
             'Asking_Price' => $request->AskingPrice,
@@ -182,7 +181,7 @@ class CarController extends Controller
             'image' => $filename,
             'make_id' => $request->make_id,
             'Model' => $request->Model,
-            'colour' => $request->Colour,
+
             'Registration' => $request->Registration,
             'Make' => $request->Make,
             'Asking_Price' => $request->AskingPrice,
