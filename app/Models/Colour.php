@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Colour extends Model
 {
     use HasFactory;
+    public function cars()
+    {
+        return $this->belongstoMany(car::class)->withTimestamps();
+    }
 }

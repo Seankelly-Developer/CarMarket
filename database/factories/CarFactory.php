@@ -28,7 +28,6 @@ class CarFactory extends Factory
             ]),
 
             'Model' => $this->faker->randomElement(["Gran Fury", "Nubira", "Sonic", "Acadia", "Corniche", "Gran Turismo", "Oasis", "Sonoma", "Accent", "Corolla", "Grand Am", "Odyssey	Sorento", "Acclaim	Coronet", "Grand Prix", "Omega", "Soul", "Accord", "Corrado", "Grand Vitara", "Omni", "Spark", "Achieva", "Corsair", "Grand", "Voyager", "Optima", "Spectra", "Aerio", "Corsica	Greiz", "Outback", "Spectrum", "Aerostar", "Cortina", "Gremlin", "Outlander", "Spider", "Aileron", "Corvette", "Grenada"]),
-            'Colour' => $this->faker->randomElement(["Red", "Blue", "Green", "Yellow", "Black", "White"]),
             /*This generates a random asking price and registration using faker
             Faker is a php library used to generate fake data */
             'Registration' => $this->faker->randomNumber(8, true),

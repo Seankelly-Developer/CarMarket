@@ -16,4 +16,8 @@ class car extends Model
     {
         return $this->belongsTo(Make::class);
     }
+    public function colours()
+    {
+        return $this->belongstoMany(Colour::class)->withTimestamps();
+    }
 }
