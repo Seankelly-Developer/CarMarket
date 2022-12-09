@@ -85,7 +85,6 @@ class CarController extends Controller
             'make_id' => $request->make_id,
             'Model' => $request->Model,
             'Registration' => $request->Registration,
-            'Make' => $request->Make,
             'Asking_Price' => $request->AskingPrice,
             'Location' => $request->Location,
             'Description' => $request->Description,
