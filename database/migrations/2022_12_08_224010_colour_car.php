@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('colour_id');
             $table->unsignedBigInteger('car_id');
 
-            $table->foreign('colour_id')->references('id')->on('Colours')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('car_id')->references('id')->on('cars')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('colour_id')->references('id')->on('Colours')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('car_id')->references('id')->on('cars')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
