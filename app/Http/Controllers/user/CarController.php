@@ -140,7 +140,8 @@ class CarController extends Controller
         } else {
             /*This returns the edit form screen */
             $make = Make::all();
-            return view('user.cars.edit')->with('car', $car)->with('makes', $make);
+            $colours = Colour::all();
+            return view('user.cars.edit')->with('car', $car)->with('makes', $make)->with('colours', $colours);
         }
     }
 
@@ -196,6 +197,7 @@ class CarController extends Controller
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
+        $car->colours()->attach($request->colours);
         return to_route('user.cars.show', $car);
     }
 

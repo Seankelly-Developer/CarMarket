@@ -39,7 +39,13 @@
                 @error('Colour')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
                 @enderror
-                <input type = "text" name ="Colour" placeholder="Enter Colour" class = "test2" value = {{ $car->colour }}>
+                <div class="form-group">
+                    <label for="colours"> <strong> Colours</strong> <br> </label>
+                    @foreach ($colours as $colour)
+                        <input type="checkbox", value="{{$colour->id}}" name="colours[]">
+                       {{$colour->name}}
+                    @endforeach
+                </div>
                 
                 @error('Registration')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>

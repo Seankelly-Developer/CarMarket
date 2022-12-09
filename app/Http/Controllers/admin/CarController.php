@@ -128,7 +128,8 @@ class CarController extends Controller
         /*The following verifies that the user is the advertisement publisher prior to allowing them to get to the edit view
         in order to make any changes */
         $make = Make::all();
-        return view('admin.cars.edit')->with('car', $car)->with('makes', $make);
+        $colours = Colour::all();
+        return view('admin.cars.edit')->with('car', $car)->with('makes', $make)->with('colours', $colours);
     }
 
     /**
@@ -174,6 +175,7 @@ class CarController extends Controller
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
+        $car->colours()->attach($request->colours);
         return to_route('admin.cars.show', $car);
     }
 
