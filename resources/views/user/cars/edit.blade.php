@@ -36,9 +36,7 @@
                 @enderror
                 <input type = "text" name ="Model" placeholder="Enter Model" class ="w-full test2" value = {{ $car->Model}}>
                 
-                @error('Colour')
-                    <div class = "text-red-600 text-sm">{{ $message }}</div>
-                @enderror
+                
                 <div class="form-group">
                     <label for="colours"> <strong> Colours</strong> <br> </label>
                     @foreach ($colours as $colour)

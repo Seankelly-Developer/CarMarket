@@ -168,7 +168,7 @@ class CarController extends Controller
             'image' => 'file|image',
             'make_id' => 'required',
             'Model' => 'required',
-            'Colour' => 'required',
+            'colours' => ['required', 'exists:colours,id'],
             'Registration' => 'required',
             'AskingPrice' => 'required',
             'Location' => 'required',
@@ -187,7 +187,7 @@ class CarController extends Controller
             'Model' => $request->Model,
 
             'Registration' => $request->Registration,
-            'Make' => $request->Make,
+
             'Asking_Price' => $request->AskingPrice,
             'Location' => $request->Location,
             'Description' => $request->Description,
@@ -196,6 +196,7 @@ class CarController extends Controller
             'email' => $request->email,
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
+
         ]);
         $car->colours()->attach($request->colours);
         return to_route('user.cars.show', $car);

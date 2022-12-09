@@ -26,6 +26,7 @@ class CarController extends Controller
         $user = Auth::user();
         $user->authorizeRoles('admin');
         $cars = Car::paginate(5);
+        $colours = Colour::all();
         return view('admin.cars.index')->with('Cars', $cars)->with('Colour');
     }
 
@@ -147,7 +148,7 @@ class CarController extends Controller
             'image' => 'file|image',
             'make_id' => 'required',
             'Model' => 'required',
-            'Colour' => 'required',
+            'colours' => ['required', 'exists:colours,id'],
             'Registration' => 'required',
             'AskingPrice' => 'required',
             'Location' => 'required',
@@ -165,7 +166,7 @@ class CarController extends Controller
             'make_id' => $request->make_id,
             'Model' => $request->Model,
             'Registration' => $request->Registration,
-            'Make' => $request->Make,
+            'make_id' => $request->make_id,
             'Asking_Price' => $request->AskingPrice,
             'Location' => $request->Location,
             'Description' => $request->Description,
