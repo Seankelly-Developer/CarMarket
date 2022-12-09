@@ -17,7 +17,22 @@ class ColourFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            [
+                'name' => 'Red',
+
+            ],
+            [
+                'name' => 'Blue',
+
+            ],
+            [
+                'name' => 'Green',
+
+            ],
+            [
+                'name' => "Yellow",
+
+            ]
         ];
     }
 }

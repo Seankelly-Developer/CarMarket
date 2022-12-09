@@ -19,11 +19,29 @@ class ColourSeeder extends Seeder
      */
     public function run()
     {
-        Colour::factory()
-            ->times(3)
-            ->create();
+        $colours = [
+            [
+                'name' => 'Red',
 
-        foreach (Colour::all() as $car) {
+            ],
+            [
+                'name' => 'Green',
+
+            ],
+            [
+                'name' => 'Blue',
+
+            ],
+            [
+                'name' => "Yellow",
+
+            ]
+        ];
+
+        foreach ($colours as $colours) {
+            Colour::create($colours);
+        }
+        foreach (car::all() as $car) {
             $colours = Colour::inRandomOrder()->take(rand(1, 3))->pluck('id');
             $car->colours()->attach($colours);
         }
