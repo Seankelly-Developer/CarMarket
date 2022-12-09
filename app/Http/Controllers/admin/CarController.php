@@ -61,6 +61,7 @@ class CarController extends Controller
             'image' => 'file|image',
             'make_id' => 'required',
             'Model' => 'required',
+            'colours' => ['required', 'exists:colours,id'],
             'Registration' => 'required',
             'AskingPrice' => 'required',
             'Location' => 'required',
@@ -80,7 +81,7 @@ class CarController extends Controller
         /*The following code creates a car object to be used to store to the database and specifies which columns to 
         store each piece of data to*/
 
-        Car::create([
+        $car = Car::create([
             'image' => $filename,
             'make_id' => $request->make_id,
             'Model' => $request->Model,
@@ -94,6 +95,7 @@ class CarController extends Controller
             'uuid' => Str::uuid(),
             'user_id' => Auth::id(),
         ]);
+        $car->colours()->attach($request->colours);
         return to_route('admin.cars.index');
     }
 
