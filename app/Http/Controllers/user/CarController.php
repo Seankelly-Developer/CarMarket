@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\car;
+use App\Models\Colour;
 use App\Models\Make;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class CarController extends Controller
         $user->authorizeRoles('user');
         // $cars = Car::paginate(5);
         $cars = Car::with('Make')->get();
-        return view('user.cars.index')->with('Cars', $cars);
+        return view('user.cars.index')->with('Cars', $cars)->with('Colour');
     }
 
     /**
@@ -38,7 +39,8 @@ class CarController extends Controller
         $user->authorizeRoles('user');
         /*This returns the view that displays the advertisement creation form*/
         $make = Make::all();
-        return view('user.cars.create')->with('makes', $make);
+        $colours = Colour::all();
+        return view('user.cars.create')->with('makes', $make)->with('colours', $colours);
     }
 
     /**

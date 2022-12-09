@@ -59,6 +59,18 @@
         <p class ="mt-2">
             <p><strong>Date of Tax Expiration</strong> {{ $car->dateOfTaxExpiration}}</p>
         </p>
+       <p><strong>Colours</strong></p>
+        @foreach ($car->colours as $colour)
+        
+        <tr>
+            
+            
+            <td> {{$colour->name }}</td>
+            <br>
+        </tr>
+      
+        
+         @endforeach
        
         <!--The mailto function allows the user to contact the advertiser-->
         <p class ="mt-2 emailLink">

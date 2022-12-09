@@ -31,7 +31,13 @@
                             @endforeach
                     </select>
                 </div>
-
+                <div class="form-group">
+                    <label for="colours"> <strong> Colours</strong> <br> </label>
+                    @foreach ($colours as $colour)
+                        <input type="checkbox", value="{{$colour->id}}" name="colours[]">
+                       {{$colour->name}}
+                    @endforeach
+                </div>
                             
                         
                
@@ -41,11 +47,7 @@
                 @enderror
                 <input type = "text" name ="Model" placeholder="Enter Model" class ="w-full test2">
                 
-                <h2>Colour</h2>
-                @error('Colour')
-                    <div class = "text-red-600 text-sm">{{ $message }}</div>
-                @enderror
-                <input type = "text" name ="Colour" placeholder="Enter Colour" class = "test2" >
+                
                 <h2>Registration</h2>
                 @error('Registration')
                     <div class = "text-red-600 text-sm">{{ $message }}</div>
